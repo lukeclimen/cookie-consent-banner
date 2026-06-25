@@ -51,7 +51,7 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 ## Roadmap to v1.0
 
 ### Phase 1 — Project Foundation
-- [ ] Establish build tooling with TypeScript support, library output, and a local dev server with hot reload
+- [X] Establish build tooling with TypeScript support, library output, and a local dev server with hot reload
 - [ ] Set up a test runner with coverage reporting
 - [ ] Configure CI to run tests automatically on every pull request
 
