@@ -73,7 +73,7 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 ### Phase 4 — Open Source Hygiene
 
 - [ ] Publish a license, contribution guide, and code of conduct
-- [ ] Add issue and pull request templates to streamline community contributions
+- [x] Add issue and pull request templates to streamline community contributions
 - [ ] Automate npm publishing on version tags via CI
 
 ### Phase 5 — Docs & Distribution
