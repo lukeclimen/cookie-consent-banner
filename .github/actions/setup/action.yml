@@ -1,0 +1,20 @@
+name: Setup environment
+description: Installs Node, enables corepack, and installs dependencies
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version: "24.x"
+
+    - name: Enable corepack / yarn berry
+      run: |
+        node --version
+        corepack enable
+        yarn --version
+      shell: bash
+
+    - name: Install dependencies
+      run: yarn install
+      shell: bash
