@@ -19,3 +19,13 @@ jobs:
 
       - name: Type check project
         run: yarn run typecheck
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+
+      - name: Test
+        run: yarn run test

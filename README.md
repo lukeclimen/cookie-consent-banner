@@ -31,18 +31,18 @@ No framework, no dependencies, no configuration file — just paste the tag and 
 
 ## Configuration
 
-| Attribute | Default | Description |
-|---|---|---|
-| `data-message` | `"This site uses cookies."` | Banner body text |
-| `data-accept-text` | `"Accept"` | Accept button label |
-| `data-reject-text` | `"Reject"` | Reject button label |
-| `data-theme-primary` | `#2563eb` | Primary button / accent colour |
-| `data-theme-bg` | `#ffffff` | Banner background colour |
-| `data-theme-text` | `#111827` | Banner text colour |
-| `data-position` | `bottom` | `top` or `bottom` |
-| `data-cookie-name` | `cc_consent` | Name of the consent cookie |
-| `data-cookie-days` | `365` | Cookie expiry in days |
-| `data-api-key` | *(empty)* | If set, enables paid geo-rules via the API |
+| Attribute            | Default                     | Description                                |
+| -------------------- | --------------------------- | ------------------------------------------ |
+| `data-message`       | `"This site uses cookies."` | Banner body text                           |
+| `data-accept-text`   | `"Accept"`                  | Accept button label                        |
+| `data-reject-text`   | `"Reject"`                  | Reject button label                        |
+| `data-theme-primary` | `#2563eb`                   | Primary button / accent colour             |
+| `data-theme-bg`      | `#ffffff`                   | Banner background colour                   |
+| `data-theme-text`    | `#111827`                   | Banner text colour                         |
+| `data-position`      | `bottom`                    | `top` or `bottom`                          |
+| `data-cookie-name`   | `cc_consent`                | Name of the consent cookie                 |
+| `data-cookie-days`   | `365`                       | Cookie expiry in days                      |
+| `data-api-key`       | _(empty)_                   | If set, enables paid geo-rules via the API |
 
 ## Configurator
 
@@ -51,28 +51,33 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 ## Roadmap to v1.0
 
 ### Phase 1 — Project Foundation
-- [X] Establish build tooling with TypeScript support, library output, and a local dev server with hot reload
-- [X] Set up a test runner with coverage reporting
-- [X] Add biome for linting and formatting
-- [X] Add lefthook for autolinting on commits
-- [ ] Configure CI to run linter, formatter and tests automatically on every pull request
+
+- [x] Establish build tooling with TypeScript support, library output, and a local dev server with hot reload
+- [x] Set up a test runner with coverage reporting
+- [x] Add biome for linting and formatting
+- [x] Add lefthook for autolinting on commits
+- [x] Configure CI to run linter and tests automatically on every pull request
 
 ### Phase 2 — Open Source Hygiene
+
 - [ ] Publish a license, contribution guide, and code of conduct
 - [ ] Add issue and pull request templates to streamline community contributions
 - [ ] Automate npm publishing on version tags via CI
 
 ### Phase 3 — Core Implementation
+
 - [ ] Parse and validate all `data-*` configuration attributes with sensible defaults
 - [ ] Implement cookie read/write/clear with configurable name and expiry
 - [ ] Render a fully themeable banner injected into the page with no external dependencies
 - [ ] Wire everything into a single auto-initialising entry point that works from a plain script tag
 
 ### Phase 4 — Quality & Testing
+
 - [ ] Achieve unit test coverage across all modules
 - [ ] Provide a working browser example for manual smoke testing
 
 ### Phase 5 — Docs & Distribution
+
 - [ ] Ship a live configurator (GitHub Pages) so users can preview and copy their script tag
 - [ ] Publish v1.0.0 to npm and verify the jsDelivr CDN link resolves correctly
 
