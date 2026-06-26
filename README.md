@@ -54,7 +54,7 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 - [X] Establish build tooling with TypeScript support, library output, and a local dev server with hot reload
 - [X] Set up a test runner with coverage reporting
 - [X] Add biome for linting and formatting
-- [ ] Add lefthook for autolinting on commits
+- [X] Add lefthook for autolinting on commits
 - [ ] Configure CI to run linter, formatter and tests automatically on every pull request
 
 ### Phase 2 — Open Source Hygiene
