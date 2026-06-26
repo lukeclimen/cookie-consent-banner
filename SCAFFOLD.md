@@ -60,5 +60,5 @@ Shared interfaces: `BannerConfig`, `ConsentState`, `ThemeOptions`.
 
 ## GitHub Pages Configurator (`docs/`)
 
-A static single-page app served at `https://<user>.github.io/cookie-consent-banner/`. Users pick colours, button text, and
+A static single-page app served at `https://lukeclimen.github.io/cookie-consent-banner/`. Users pick colours, button text, and
 position via a form, see a live preview of the banner, and copy a ready-to-paste `<script>` tag.
