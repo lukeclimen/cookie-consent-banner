@@ -30,14 +30,22 @@ export const parseConfig = (
     const acceptText = dataset.acceptText ?? "Accept";
     const rejectText = dataset.rejectText ?? "Reject";
     const message = dataset.message ?? "This site uses cookies.";
-    const themePrimary = dataset.themePrimary ?? "#2563eb";
-    const themeBackground = dataset.themeBackground ?? "#fff";
-    const themeText = dataset.themeText ?? "#000";
-    // Need to validate the string value given for position
+    // Valdiate hex codes
+    let themePrimary = dataset.themePrimary;
+    if (!themePrimary || !validateHexCode(themePrimary))
+      themePrimary = "#2563eb";
+    let themeBackground = dataset.themeBackground;
+    if (!themeBackground || !validateHexCode(themeBackground))
+      themeBackground = "#fff";
+    let themeText = dataset.themeText;
+    if (!themeText || !validateHexCode(themeText)) themeText = "#000";
+    // Validate the string value given for position
     const pos = dataset.position ?? "bottom";
     const position: "top" | "bottom" =
       pos === "top" || pos === "bottom" ? pos : "bottom";
-    const cookieDays = Number(dataset.cookieDays ?? 365);
+    // Validate against NaN
+    const cookieDaysRaw = Number(dataset.cookieDays ?? 365);
+    const cookieDays = isNaN(cookieDaysRaw) ? 365 : cookieDaysRaw;
     const cookieName = dataset.cookieName ?? "cc-consent";
     const apiKey = dataset.apiKey || undefined;
 
@@ -54,4 +62,15 @@ export const parseConfig = (
       apiKey,
     };
   }
+};
+
+/**
+ * Given a string, return true if it's a valid hex code, false otherwise.
+ *
+ * @param hexCode
+ */
+const validateHexCode = (hexCode: string): boolean => {
+  const validHexRegex: RegExp = /^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/;
+
+  return validHexRegex.test(hexCode);
 };
