@@ -1,8 +1,25 @@
 {
   "name": "cookie-consent-banner",
-  "private": true,
+  "description": "GDPR-compliant cookie consent banner TS script.",
+  "license": "MIT",
+  "author": "Lucas Climenhage",
   "version": "0.0.0",
   "type": "module",
+  "exports": [
+    "maint.ts"
+  ],
+  "keywords": [
+    "cookie",
+    "consent",
+    "banner",
+    "gdpr",
+    "ccpa",
+    "pipeda",
+    "appi",
+    "dpdpa",
+    "pipa",
+    "privacy"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
