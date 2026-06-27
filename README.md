@@ -58,23 +58,23 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 - [x] Add lefthook for autolinting on commits
 - [x] Configure CI to run linter and tests automatically on every pull request
 
-### Phase 2 — Open Source Hygiene
-
-- [ ] Publish a license, contribution guide, and code of conduct
-- [ ] Add issue and pull request templates to streamline community contributions
-- [ ] Automate npm publishing on version tags via CI
-
-### Phase 3 — Core Implementation
+### Phase 2 — Core Implementation
 
 - [ ] Parse and validate all `data-*` configuration attributes with sensible defaults
 - [ ] Implement cookie read/write/clear with configurable name and expiry
 - [ ] Render a fully themeable banner injected into the page with no external dependencies
 - [ ] Wire everything into a single auto-initialising entry point that works from a plain script tag
 
-### Phase 4 — Quality & Testing
+### Phase 3 — Quality & Testing
 
 - [ ] Achieve unit test coverage across all modules
 - [ ] Provide a working browser example for manual smoke testing
+
+### Phase 4 — Open Source Hygiene
+
+- [ ] Publish a license, contribution guide, and code of conduct
+- [ ] Add issue and pull request templates to streamline community contributions
+- [ ] Automate npm publishing on version tags via CI
 
 ### Phase 5 — Docs & Distribution
 
