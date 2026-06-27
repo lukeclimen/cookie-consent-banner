@@ -109,3 +109,7 @@ test("parseConfig falls back to default colours for invalid hex strings", () => 
     expect(result![key as keyof BannerSettings]).toBe(value);
   }
 });
+
+test("parseConfig returns null if passed in a null values", () => {
+  expect(parseConfig(null)).toBeNull();
+});

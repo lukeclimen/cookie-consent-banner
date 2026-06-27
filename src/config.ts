@@ -21,7 +21,7 @@ export interface BannerSettings {
  * @returns An object of the dataset values of the given script tag, or null.
  */
 export const parseConfig = (
-  cookieScript: HTMLScriptElement,
+  cookieScript: HTMLScriptElement | null,
 ): BannerSettings | null => {
   if (cookieScript === null) {
     return null;
