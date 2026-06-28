@@ -1,17 +1,22 @@
 const COOKIE_SCHEMA_VERSION = 1;
 
 export interface CookieFormat {
-  name: string;
   version: number;
   choice: "accepted" | "rejected";
 }
 
 export const getCookie = (name: string): CookieFormat | null => {
-  return {
-    name: "cc_cookie",
-    version: COOKIE_SCHEMA_VERSION,
-    choice: "accepted",
-  };
+  const cookies = document.cookie;
+  const storedCookie = cookies
+    .split("; ")
+    .find((value) => value.startsWith(name))
+    ?.split("=")[1];
+
+  if (storedCookie) {
+    return JSON.parse(storedCookie);
+  } else {
+    return null;
+  }
 };
 
 export const setCookie = (
