@@ -1,0 +1,7 @@
+pre-commit:
+  fail_on_changes: "always"
+  commands:
+    lint:
+      glob: "*.{ts}"
+      run: bunx biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: false
