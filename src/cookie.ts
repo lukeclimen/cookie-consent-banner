@@ -28,5 +28,5 @@ export const setCookie = (
 };
 
 export const clearCookie = (name: string): void => {
-  return;
+  document.cookie = `${name}=; expires=${new Date(0).toUTCString()}`;
 };

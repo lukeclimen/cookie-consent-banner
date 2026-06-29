@@ -41,3 +41,59 @@ test("getCookie returns null if cookie name incorrect", () => {
 
   expect(getCookie("fake_test_cookie")).toBeNull();
 });
+
+test("clearCookie clears the named cookie", () => {
+  let cookieState = document.cookie;
+  expect(cookieState).toBe("");
+
+  document.cookie = "unrelated_cookie=unrelated";
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe("unrelated_cookie=unrelated");
+
+  document.cookie = `test_cookie=${JSON.stringify(testCookie)}`;
+
+  cookieState = document.cookie;
+  expect(cookieState).not.toBe("unrelated_cookie=unrelated");
+
+  clearCookie("test_cookie");
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe("unrelated_cookie=unrelated");
+
+  clearCookie("unrelated_cookie");
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe("");
+});
+
+test("clearCookie does nothing if no match to named cookie", () => {
+  let cookieState = document.cookie;
+  expect(cookieState).toBe("");
+
+  document.cookie = `test_cookie=${JSON.stringify(testCookie)}`;
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe('test_cookie={"version":12345,"choice":"rejected"}');
+
+  clearCookie("fake_test_cookie");
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe('test_cookie={"version":12345,"choice":"rejected"}');
+});
+
+test("clearCookie does nothing unless name matches exactly", () => {
+  let cookieState = document.cookie;
+  expect(cookieState).toBe("");
+
+  document.cookie = `test_cookie=${JSON.stringify(testCookie)}`;
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe('test_cookie={"version":12345,"choice":"rejected"}');
+
+  clearCookie("test");
+  clearCookie("test_cook");
+
+  cookieState = document.cookie;
+  expect(cookieState).toBe('test_cookie={"version":12345,"choice":"rejected"}');
+});
