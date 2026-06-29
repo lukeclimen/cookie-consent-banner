@@ -1,5 +1,7 @@
+// biome-ignore-all lint/suspicious/noDocumentCookie: Cookie Store API lacks Firefox support
+
 import { afterEach, expect, test } from "vitest";
-import { setCookie, getCookie, clearCookie, type CookieFormat } from "./cookie";
+import { type CookieFormat, clearCookie, getCookie } from "./cookie";
 
 const testCookie: CookieFormat = {
   version: 12345,
@@ -40,6 +42,7 @@ test("getCookie returns null if cookie name incorrect", () => {
   document.cookie = `test_cookie=${stringifiedCookie}`;
 
   expect(getCookie("fake_test_cookie")).toBeNull();
+  expect(getCookie("test_cook")).toBeNull();
 });
 
 test("clearCookie clears the named cookie", () => {
