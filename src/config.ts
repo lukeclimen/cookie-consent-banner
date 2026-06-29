@@ -20,9 +20,7 @@ export interface BannerSettings {
  * @param cookieScript
  * @returns An object of the dataset values of the given script tag, or null.
  */
-export const parseConfig = (
-  cookieScript: HTMLScriptElement | null,
-): BannerSettings | null => {
+export const parseConfig = (cookieScript: HTMLScriptElement | null): BannerSettings | null => {
   if (cookieScript === null) {
     return null;
   } else {
@@ -32,17 +30,14 @@ export const parseConfig = (
     const message = dataset.message ?? "This site uses cookies.";
     // Valdiate hex codes
     let themePrimary = dataset.themePrimary;
-    if (!themePrimary || !validateHexCode(themePrimary))
-      themePrimary = "#2563eb";
+    if (!themePrimary || !validateHexCode(themePrimary)) themePrimary = "#2563eb";
     let themeBackground = dataset.themeBackground;
-    if (!themeBackground || !validateHexCode(themeBackground))
-      themeBackground = "#fff";
+    if (!themeBackground || !validateHexCode(themeBackground)) themeBackground = "#fff";
     let themeText = dataset.themeText;
     if (!themeText || !validateHexCode(themeText)) themeText = "#000";
     // Validate the string value given for position
     const pos = dataset.position ?? "bottom";
-    const position: "top" | "bottom" =
-      pos === "top" || pos === "bottom" ? pos : "bottom";
+    const position: "top" | "bottom" = pos === "top" || pos === "bottom" ? pos : "bottom";
     // Validate against NaN
     const cookieDaysRaw = Number(dataset.cookieDays ?? 365);
     const cookieDays = isNaN(cookieDaysRaw) ? 365 : cookieDaysRaw;

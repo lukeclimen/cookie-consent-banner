@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { parseConfig, type BannerSettings } from "./config";
+import { type BannerSettings, parseConfig } from "./config";
 
 const testBannerSettings: BannerSettings = {
   acceptText: "I Accept",
