@@ -11,6 +11,19 @@ export interface BannerSettings {
   apiKey?: string;
 }
 
+export const DEFAULT_SETTINGS: Omit<BannerSettings, "apiKey"> = {
+  acceptText: "Accept",
+  rejectText: "Reject",
+  message:
+    "This website uses cookies to enhance our browsing experience and provide personalized content.",
+  themePrimary: "#2563eb",
+  themeBackground: "#fff",
+  themeText: "#000",
+  position: "bottom",
+  cookieDays: 365,
+  cookieName: "cc-consent",
+};
+
 /**
  * This function takes in the current script tag and returns the dataset values.
  *
@@ -25,23 +38,26 @@ export const parseConfig = (cookieScript: HTMLScriptElement | null): BannerSetti
     return null;
   } else {
     const dataset = cookieScript.dataset;
-    const acceptText = dataset.acceptText ?? "Accept";
-    const rejectText = dataset.rejectText ?? "Reject";
-    const message = dataset.message ?? "This site uses cookies.";
+    const acceptText = dataset.acceptText ?? DEFAULT_SETTINGS.acceptText;
+    const rejectText = dataset.rejectText ?? DEFAULT_SETTINGS.rejectText;
+    const message = dataset.message ?? DEFAULT_SETTINGS.message;
     // Valdiate hex codes
     let themePrimary = dataset.themePrimary;
-    if (!themePrimary || !validateHexCode(themePrimary)) themePrimary = "#2563eb";
+    if (!themePrimary || !validateHexCode(themePrimary))
+      themePrimary = DEFAULT_SETTINGS.themePrimary;
     let themeBackground = dataset.themeBackground;
-    if (!themeBackground || !validateHexCode(themeBackground)) themeBackground = "#fff";
+    if (!themeBackground || !validateHexCode(themeBackground))
+      themeBackground = DEFAULT_SETTINGS.themeBackground;
     let themeText = dataset.themeText;
-    if (!themeText || !validateHexCode(themeText)) themeText = "#000";
+    if (!themeText || !validateHexCode(themeText)) themeText = DEFAULT_SETTINGS.themeText;
     // Validate the string value given for position
-    const pos = dataset.position ?? "bottom";
-    const position: "top" | "bottom" = pos === "top" || pos === "bottom" ? pos : "bottom";
+    const pos = dataset.position ?? DEFAULT_SETTINGS.position;
+    const position: "top" | "bottom" =
+      pos === "top" || pos === "bottom" ? pos : DEFAULT_SETTINGS.position;
     // Validate against NaN
-    const cookieDaysRaw = Number(dataset.cookieDays ?? 365);
-    const cookieDays = isNaN(cookieDaysRaw) ? 365 : cookieDaysRaw;
-    const cookieName = dataset.cookieName ?? "cc-consent";
+    const cookieDaysRaw = Number(dataset.cookieDays ?? DEFAULT_SETTINGS.cookieDays);
+    const cookieDays = isNaN(cookieDaysRaw) ? DEFAULT_SETTINGS.cookieDays : cookieDaysRaw;
+    const cookieName = dataset.cookieName ?? DEFAULT_SETTINGS.cookieName;
     const apiKey = dataset.apiKey || undefined;
 
     return {

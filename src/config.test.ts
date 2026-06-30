@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { type BannerSettings, parseConfig } from "./config";
+import { type BannerSettings, DEFAULT_SETTINGS, parseConfig } from "./config";
 
 const testBannerSettings: BannerSettings = {
   acceptText: "I Accept",
@@ -29,23 +29,11 @@ test("parseConfig correctly parses a well-formed script tag dataset", () => {
 });
 
 test("parseConfig falls back to all defaults when dataset is empty", () => {
-  const allDefaults: BannerSettings = {
-    acceptText: "Accept",
-    rejectText: "Reject",
-    message: "This site uses cookies.",
-    themePrimary: "#2563eb",
-    themeBackground: "#fff",
-    themeText: "#000",
-    position: "bottom",
-    cookieDays: 365,
-    cookieName: "cc-consent",
-  };
-
   const script = document.createElement("script");
   const result = parseConfig(script);
   expect(result).not.toBeNull();
 
-  for (const [key, value] of Object.entries(allDefaults)) {
+  for (const [key, value] of Object.entries(DEFAULT_SETTINGS)) {
     expect(result![key as keyof BannerSettings]).toBe(value);
   }
 });
