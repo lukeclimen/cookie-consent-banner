@@ -24,9 +24,11 @@ export const createBanner = (
   bannerBodyText.setAttribute("id", "cookie-banner-body");
 
   const acceptButton = document.createElement("button");
+  acceptButton.setAttribute("id", "cookie-banner-accept-button");
   acceptButton.textContent = settings.acceptText;
 
   const rejectButton = document.createElement("button");
+  rejectButton.setAttribute("id", "cookie-banner-reject-button");
   rejectButton.textContent = settings.rejectText;
 
   // Wire up the buttons to functions

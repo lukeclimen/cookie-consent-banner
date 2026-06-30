@@ -59,8 +59,41 @@ test("Test that banner is removed with hide", () => {
   let cookieBanner = document.getElementById("cookie-consent-banner");
   expect(cookieBanner).not.toBeNull();
 
-  banner.hide();
+  banner.destroy();
 
   cookieBanner = document.getElementById("cookie-consent-banner");
   expect(cookieBanner).toBeNull();
+});
+
+test("Test that banner buttons are clickable with return functions", () => {
+  let userAccepted = false;
+  let userRejected = false;
+
+  const acceptClicked = () => {
+    userAccepted = true;
+    userRejected = false;
+  };
+
+  const rejectClicked = () => {
+    userAccepted = false;
+    userRejected = true;
+  };
+  const banner = createBanner(testBannerSettings, acceptClicked, rejectClicked);
+  banner.show();
+
+  const cookieBanner = document.getElementById("cookie-consent-banner");
+  expect(cookieBanner).not.toBeNull();
+
+  expect(userAccepted).toBe(false);
+  expect(userRejected).toBe(false);
+
+  document.getElementById("cookie-banner-accept-button")?.click();
+  expect(userAccepted).toBe(true);
+  expect(userRejected).toBe(false);
+
+  document.getElementById("cookie-banner-reject-button")?.click();
+  expect(userAccepted).toBe(false);
+  expect(userRejected).toBe(true);
+
+  banner.destroy();
 });

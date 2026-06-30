@@ -61,7 +61,7 @@ Not sure what options to use? Try the **[live configurator](https://lukeclimen.g
 ### Phase 2 — Core Implementation
 
 - [ ] Parse and validate all `data-*` configuration attributes with sensible defaults
-- [ ] Implement cookie read/write/clear with configurable name and expiry
+- ~~[ ] Implement cookie read/write/clear with configurable name and expiry~~
 - [ ] Render a fully themeable banner injected into the page with no external dependencies
 - [ ] Wire everything into a single auto-initialising entry point that works from a plain script tag
 
